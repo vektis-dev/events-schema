@@ -39,4 +39,15 @@ jobs:
         run: npm run build
 
       - name: Publish to npm with provenance
-        run: npm publish --provenance --access public
+        # Prerelease versions (e.g., 0.0.1-rc.1) MUST be published under a
+        # non-'latest' dist-tag, otherwise npm rejects with EUSAGE. Stable
+        # versions publish to 'latest' by default. Detect from package.json.
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "$VERSION" == *-* ]]; then
+            echo "Prerelease version $VERSION; publishing under 'rc' dist-tag"
+            npm publish --provenance --access public --tag rc
+          else
+            echo "Stable version $VERSION; publishing to default 'latest' dist-tag"
+            npm publish --provenance --access public
+          fi
