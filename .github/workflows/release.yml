@@ -26,6 +26,10 @@ jobs:
           cache: 'npm'
           registry-url: 'https://registry.npmjs.org/'
 
+      # Trusted Publishing (OIDC) requires npm >=11.5.1; Node 20 ships npm 10.x.
+      # Upgrade explicitly so `npm publish --provenance` uses the OIDC code path.
+      - run: npm install -g npm@latest
+
       - run: npm ci
 
       - name: Run tests

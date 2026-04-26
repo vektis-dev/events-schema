@@ -17,6 +17,12 @@ jobs:
           node-version: '20.x'
           cache: 'npm'
 
+      # Pin npm to latest. The release workflow needs npm >=11.5.1 for OIDC
+      # publish; CI runs `npm publish --dry-run` for tarball verification — we
+      # match versions across both jobs to avoid surprises between dry-run and
+      # real publish.
+      - run: npm install -g npm@latest
+
       - run: npm ci
 
       - name: Typecheck
