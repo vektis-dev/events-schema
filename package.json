@@ -1,0 +1,73 @@
+{
+  "name": "@vektis-io/events-schema",
+  "version": "1.0.0",
+  "description": "Shared Zod event-validation schemas for @vektis-io/tracker and the VEKTIS analytics ingestion server.",
+  "license": "MIT",
+  "author": "VEKTIS",
+  "homepage": "https://github.com/vektis-dev/events-schema#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vektis-dev/events-schema.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vektis-dev/events-schema/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./fixtures": {
+      "types": "./dist/fixtures.d.ts",
+      "import": "./dist/fixtures.js",
+      "require": "./dist/fixtures.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vitest": "^4.1.4",
+    "zod": "^4.3.6"
+  },
+  "keywords": [
+    "vektis",
+    "analytics",
+    "events",
+    "zod",
+    "schema",
+    "validation",
+    "tracker",
+    "tracking"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
