@@ -1,0 +1,38 @@
+# Publish via npm Trusted Publishing (OIDC). See VEKTIS ADR 004.
+# A trusted-publisher entry must exist on npmjs.com for @vektis-io/events-schema
+# scoped to vektis-dev/events-schema + .github/workflows/release.yml before
+# tagging. No NPM_TOKEN / NODE_AUTH_TOKEN is referenced — that is intentional.
+
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org/'
+
+      - run: npm ci
+
+      - name: Run tests
+        run: npm run test:run
+
+      - name: Build (tsup)
+        run: npm run build
+
+      - name: Publish to npm with provenance
+        run: npm publish --provenance --access public
