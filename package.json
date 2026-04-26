@@ -1,6 +1,6 @@
 {
   "name": "@vektis-io/events-schema",
-  "version": "1.0.0",
+  "version": "0.0.1-rc.1",
   "description": "Shared Zod event-validation schemas for @vektis-io/tracker and the VEKTIS analytics ingestion server.",
   "license": "MIT",
   "author": "VEKTIS",
