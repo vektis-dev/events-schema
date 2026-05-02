@@ -109,7 +109,10 @@ The `zod` peer-dep range is `^4.0.0`. A future `zod@5` will require a major bump
 
 ## About `@vektis-io`
 
-[VEKTIS](https://vektis.io) helps software teams measure which engineering work actually delivers customer impact. `@vektis-io/events-schema` is the contract layer of the Impact Tracking data path. See also: [`@vektis-io/tracker`](https://www.npmjs.com/package/@vektis-io/tracker) — the browser SDK.
+[VEKTIS](https://vektis.io) helps software teams measure which engineering work actually delivers customer impact. `@vektis-io/events-schema` is the contract layer of the Impact Tracking data path. See also:
+
+- [`@vektis-io/tracker`](https://www.npmjs.com/package/@vektis-io/tracker) — the browser SDK that emits events validated against these schemas
+- [docs.vektis.io](https://docs.vektis.io) — VEKTIS product documentation, including [tracker integration guides](https://docs.vektis.io/integrations/tracker) for Next.js, Vite, Nuxt, SvelteKit, and more
 
 ## License
 
