@@ -139,4 +139,35 @@ describe("trackEventsSchema", () => {
     });
     expect(result.success).toBe(false);
   });
+
+  it("accepts a batch with an optional `key` field", () => {
+    const result = trackEventsSchema.safeParse({
+      events: [validEvent()],
+      key: "vk_pub_prd_abc123",
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("accepts a batch without a `key` field", () => {
+    const result = trackEventsSchema.safeParse({
+      events: [validEvent()],
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects an empty `key` string", () => {
+    const result = trackEventsSchema.safeParse({
+      events: [validEvent()],
+      key: "",
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects a `key` longer than 128 characters", () => {
+    const result = trackEventsSchema.safeParse({
+      events: [validEvent()],
+      key: "k".repeat(129),
+    });
+    expect(result.success).toBe(false);
+  });
 });
