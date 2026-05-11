@@ -8,3 +8,5 @@ coverage/
 *.log
 .vscode/
 .idea/
+vektis-io-events-schema*
+.notes

@@ -64,6 +64,7 @@ export const trackingEventSchema = z
 
 export const trackEventsSchema = z.object({
   events: z.array(trackingEventSchema).min(1).max(100),
+  key: z.string().min(1).max(128).optional(),
 });
 
 export type TrackingEvent = z.infer<typeof trackingEventSchema>;

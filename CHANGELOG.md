@@ -2,6 +2,18 @@
 
 All notable changes to `@vektis-io/events-schema` are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning follows [Semver](https://semver.org/).
 
+## v1.1.0 — 2026-05-11
+
+Additive: optional `key` field on `TrackEventsPayload`. Lets the browser SDK send the API key in the request body (alongside `events`) instead of a URL query string on the `sendBeacon` path. Existing payloads without `key` continue to validate.
+
+### Added
+
+- `trackEventsSchema.key` — optional `string` (1–128 chars). Consumed by vanalytics as a third key source (header → body → query precedence).
+
+### Constraint impact
+
+- No breaking change. Server and SDK behavior with `key` absent is unchanged.
+
 ## v1.0.0 — TBD
 
 Initial release. Extracted from `vanalytics/server/src/validators/event.schema.ts` (schema-as-of-2026-04-23) per [VEK-342](https://linear.app/vektis/issue/VEK-342).

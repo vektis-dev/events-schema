@@ -54,7 +54,7 @@ Useful for downstream contract tests that need a known-valid payload.
 | `EVENT_TYPES` | `readonly` array of valid `event_type` values |
 | `NON_BILLABLE_EVENT_TYPES` | Subset that doesn't count toward billable usage |
 | `trackingEventSchema` | Zod schema for a single event |
-| `trackEventsSchema` | Zod schema for a batch (1–100 events) |
+| `trackEventsSchema` | Zod schema for a batch (1–100 events, plus an optional `key` field for body-key auth) |
 | `EventType` | Union type of valid event types |
 | `TrackingEvent` | Inferred type of `trackingEventSchema` |
 | `TrackEventsPayload` | Inferred type of `trackEventsSchema` |
